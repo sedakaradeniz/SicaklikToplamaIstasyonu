@@ -1,0 +1,57 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdDICT;
+
+type
+  TForm1 = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Edit1: TEdit;
+    Timer1: TTimer;
+    Label4: TLabel;
+    RadioGroup1: TRadioGroup;
+    SIRA_NOSU: TLabel;
+    SIRA_NO: TLabel;
+    procedure Timer1Timer(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Timer1Timer(Sender: TObject);
+var
+sicaklik: integer;
+begin
+if Edit1.Text<>'' then
+
+sicaklik:=Random(StrToInt(Edit1.Text));
+Label4.Caption:=IntToStr(sicaklik);
+// o anda okunan sýcaklýk deðeri hangi mekana ait bilgisi
+                 if RadioGroup1.ItemIndex=0 then    RadioGroup1.ItemIndex:=1 else
+
+                 if RadioGroup1.ItemIndex=1 then    RadioGroup1.ItemIndex:=2 else
+
+                 if RadioGroup1.ItemIndex=2 then    RadioGroup1.ItemIndex:=0;
+
+// sýra no labeli için otomatik artan sayý üretelim
+SIRA_NO.Caption:=IntToStr(StrToInt(SIRA_NO.Caption)+1);
+
+
+
+end;
+
+end.
